@@ -1,5 +1,5 @@
 ### Creative JS
-A list of creative experiment I created. Try to refresh the page on each of them to get a different result.
+A list of creative experiments I created. Try to refresh the page on each of them to get a different result.
 
 https://flyingrub.github.io/creative-js/
 
