@@ -5,6 +5,7 @@ var circleTime;
 var middle;
 var audioData;
 
+//initAudio();
 function setup() {
   frameRate(30);
   createCanvas(800, 800);
@@ -20,7 +21,7 @@ function draw() {
   for (var i = 0; i < circleNumber; i++) {
     drawCircle(200, circlePoint, middle, i);
   }
-  audioData = audio.analyse();
+  //audioData = audio.analyse();
   //shouldEndRecord();
 }
 
