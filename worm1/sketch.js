@@ -12,7 +12,7 @@ function draw() {
   background(255);
   for (var i = 0; i < branch; i++) {
     var angle =  i / branch * 2 * PI;
-    drawBranch( angle, circleNumber, 350 ) 
+    drawBranch( angle, circleNumber, 350 )
   }
 }
 

@@ -12,7 +12,7 @@ class Audio {
         // Analyser
         this.analyser = this.audioContext.createAnalyser();
         this.sampleRate = this.audioContext.sampleRate;
-        this.analyser.smoothingTimeConstant = 0.5;
+        this.analyser.smoothingTimeConstant = 0.9;
         this.analyser.fftSize = 1024;
         this.freqMax = this.sampleRate / 2;
         this.bufferLength = this.analyser.frequencyBinCount;
@@ -53,7 +53,7 @@ class Audio {
 
         let average = (array) => {
             let sum = array.reduce(function(a, b) { return a + b; });
-            return sum / array.length;
+            return sum / array.length / 255;
         }
 
         return {
@@ -61,6 +61,7 @@ class Audio {
             kick : average(kick),
             mid : average(mid),
             high : average(high),
+            volume : average(this.freq)
         };
     }
 
