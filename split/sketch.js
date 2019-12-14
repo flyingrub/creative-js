@@ -1,7 +1,7 @@
-var splitNumber = 10;
+var splitNumber = 5;
 var polygonSize = 4;
-var margin = 20;
-var lineWidth = 10;
+var margin = 50;
+var lineWidth = 20;
 var radius = 300;
 var noiseAmount = 0;
 var polygons = []
@@ -85,12 +85,18 @@ function getRandomPointOnLine(line) {
     var lineLenght = line[0].dist(line[1]);
     var vector = getVectorFromLine(line);
     var offsetLength = random(margin, lineLenght-margin);
-    if (offsetLength < lineLenght) {
+    if (offsetLength > lineLenght) {
         offsetLength = lineLenght / 2;
     }
-    var v = line[0].copy();
-    v.add(vector.mult(offsetLength));
-    return v.copy();
+
+    var firstOffset = offsetLength - lineWidth / 2;
+    var secondOffset = offsetLength + lineWidth / 2;
+
+    var v1 = line[0].copy();
+    v1.add(vector.copy().mult(firstOffset));
+    var v2 = line[0].copy();
+    v2.add(vector.copy().mult(secondOffset));
+    return [v1.copy(), v2.copy()];
 }
 
 function lineEquals(line1, line2) {
@@ -123,14 +129,14 @@ function randomSplitPolygon() {
     var p2 = getRandomPointOnLine(line2);
 
     var newPolygon1 = currentPolygon.slice(0, rIndex[0]);
-    newPolygon1.push(p);
-    newPolygon1.push(p2);
+    newPolygon1.push(p[1].copy());
+    newPolygon1.push(p2[0].copy());
     newPolygon1 = newPolygon1.concat(currentPolygon.slice(rIndex[1], currentPolygon.length));
     
     var newPolygon2 = [];
-    newPolygon2.push(p);
+    newPolygon2.push(p[0].copy());
     newPolygon2 = newPolygon2.concat(currentPolygon.slice(rIndex[0], rIndex[1]));
-    newPolygon2.push(p2);
+    newPolygon2.push(p2[1].copy());
     polygons.push(newPolygon1);
     polygons.push(newPolygon2);
 
