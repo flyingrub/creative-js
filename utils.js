@@ -1,5 +1,18 @@
 let audio;
 
+const hashCode = s => s.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)
+
+function setupSeed() {
+    var url = new URL(window.location.href);
+    var seed = url.searchParams.get("seed");
+    if (seed)
+    {
+        var seedNumber = hashCode(btoa(seed));
+        randomSeed(seedNumber);
+        noiseSeed(seedNumber);
+    }
+}
+
 function initAudio() {
     audio = new Audio();
     audio.init();

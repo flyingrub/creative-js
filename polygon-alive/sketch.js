@@ -12,7 +12,7 @@ function setup() {
     createCanvas(1200, 1200);
     center = createVector(600, 600);
     polygonSize = random(3, 10);
-    noLoop();
+    //noLoop();
     background(0)
     noFill();
     strokeWeight(2)

@@ -8,10 +8,7 @@ var polygons = []
 var center;
 
 function setup() {
-    var url = new URL(window.location.href);
-    var seed = url.searchParams.get("seed");
-    if (seed)
-        randomSeed(seed);
+    setupSeed();
     createCanvas(1200, 1200);
     center = createVector(600, 600);
     polygonSize = 4;
