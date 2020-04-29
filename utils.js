@@ -2,6 +2,17 @@ let audio;
 
 const hashCode = s => s.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)
 
+window.addEventListener('keydown', (event) => {
+    if (event.ctrlKey || event.metaKey) {
+        switch (String.fromCharCode(event.which).toLowerCase()) {
+        case 's':
+            event.preventDefault();
+            saveCanvas(document.title + random(), 'png');
+            break;
+        }
+    }
+});
+
 function setupSeed() {
     var url = new URL(window.location.href);
     var seed = url.searchParams.get("seed");
